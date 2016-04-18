@@ -1,3 +1,2 @@
 #/usr/bin/env bash
-DBPATH=/home/lmfdb/db
-numactl --interleave=all mongod --port 37010 --dbpath=$DBPATH --fork --journal --logpath=$DBPATH/mongo.log --auth
+numactl --interleave=all mongod --config mongod.conf 
