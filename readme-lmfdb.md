@@ -2,9 +2,9 @@
 
 There are three web servers each running a different branch of the lmfdb code:
 
-1. www.lmfdb.org points to lmfd.warwick.xyz (the cloud server) and runs prod.
-2. beta.lmfdb.org points to lmfd.warwick.ac.uk:37002 and runs beta.
-3. lmfdb.warwick.ac.uk goes to lmfd.warwick.ac.uk:37001 and runs prod.
+1. www.lmfdb.org points to lmfdb.warwick.xyz (the cloud server) and runs prod.
+2. beta.lmfdb.org points to lmfdb.warwick.ac.uk:37002 and runs beta.
+3. lmfdb.warwick.ac.uk goes to lmfdb.warwick.ac.uk:37001 and runs prod.
 
 The configuration files for these (2 and 3) are in
 ~/lmfdb-git-prod/gunicorn-config and ~/
