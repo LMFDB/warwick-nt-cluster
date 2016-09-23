@@ -36,6 +36,7 @@ mv admin ~/dump-admin/$timestamp/
 rm -rf '*'
 cd ..
 chmod -R ug+rw latest
+rm -rf latest
 
 # bup backup of $timestamp
 $NICE bup index -uv ~/dump/$timestamp
@@ -63,7 +64,7 @@ log "moved directory to data/db/$timestamp"
 
 # last step should be to get rid of older directories in data/db
 
-todel="`find data/db -maxdepth 1 -mindepth 1 -ctime +40 -type d`"
+todel="`find data/db -maxdepth 1 -mindepth 1 -ctime +36 -type d`"
 echo "the following older directories in data/db are deleted: $todel"
 rm -rf $todel
 log "deleted old directories: $todel"
