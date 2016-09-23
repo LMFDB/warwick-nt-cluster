@@ -45,8 +45,19 @@ Label: lmfdb  uuid: 495a3b08-5ae4-45e5-a994-d2aa0ca1c480
 	devid    6 size 3.64TiB used 3.25TiB path /dev/sdg
 	devid    7 size 3.64TiB used 3.25TiB path /dev/sdh
 
-The O/S sees only one partition, on device /dev/sdg: see /etc/fstab
-where the relevant entry is
+Also:
+
+$ sudo btrfs fi df /data
+Data, RAID1: total=12.71TiB, used=11.86TiB
+System, RAID1: total=32.00MiB, used=1.89MiB
+Metadata, RAID1: total=22.00GiB, used=19.40GiB
+
+"Keep in mind, that the free values shown by the normal df are not
+reliable, as it is hard to predict how disk usage will behave in a
+copy-on-write and snapshotting filesystem like btrfs."
+
+The O/S (i.e. mount) sees only one partition, the last one above (so
+currently device /dev/sdh: see /etc/fstab where the relevant entry is
 
 UUID=495a3b08-5ae4-45e5-a994-d2aa0ca1c480 /data btrfs defaults,noatime,compress,user_subvol_rm_allowed 0 1
 
@@ -63,9 +74,9 @@ the other DG, i.e. DG0 (=VD1).
 
 To add a new device, use "sudo btrfs device add", for example 
 
-"sudo btrfs device add /dev/sdh /data" to add VD8
-"sudo btrfs device add /dev/sdh /data" to add VD9
-"sudo btrfs device add /dev/sdh /data" to add VD10
+"sudo btrfs device add /dev/sdi /data" to add VD8
+"sudo btrfs device add /dev/sdj /data" to add VD9
+"sudo btrfs device add /dev/sdk /data" to add VD10
 
 followed by "sudo btrfs balance /data".  This takes a very long time; you
 can use "sudo btrfs fi show to see how it is going.
