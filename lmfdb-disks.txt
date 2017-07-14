@@ -32,7 +32,7 @@ DG1-DG10 (the other 10 disks, VD0, VD2,...,VD10) use no hardware RAID,
 i.e. they are set as RAID-0.  There is a single partition /data on
 device /dev/sdg, which is configured under BTRFS.  This allows each of
 the 10 physical disks to be brough online / offline individually.  At
-present (June 2017) 7 of these are in use, as revealed by:
+present (July 2017) 9 of these are in use, as revealed by:
 
 jec@lmfdb:~/system$ sudo btrfs fi show
         Total devices 9 FS bytes used 11.87TiB
