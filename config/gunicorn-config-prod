@@ -11,4 +11,5 @@ loglevel = 'info' # change to 'debug' for more output
 default_proc_name = 'lmfdb'
 timeout = 20
 max_requests = 100
+limit_request_line = 8190
 reload = False
