@@ -32,7 +32,7 @@ DG1-DG10 (the other 10 disks, VD0, VD2,...,VD10) use no hardware RAID,
 i.e. they are set as RAID-0.  There is a single partition /data on
 device /dev/sdg, which is configured under BTRFS.  This allows each of
 the 10 physical disks to be brough online / offline individually.  At
-present (June 2017) 7 of these are in use, as revealed by:
+present (July 2017) 9 of these are in use, as revealed by:
 
 jec@lmfdb:~/system$ sudo btrfs fi show
         Total devices 9 FS bytes used 11.87TiB
@@ -46,8 +46,19 @@ jec@lmfdb:~/system$ sudo btrfs fi show
         devid    8 size 3.64TiB used 2.65TiB path /dev/sdi
         devid    9 size 3.64TiB used 2.65TiB path /dev/sdj
 
-The O/S sees only one partition, on device /dev/sdg: see /etc/fstab
-where the relevant entry is
+Also:
+
+$ sudo btrfs fi df /data
+Data, RAID1: total=12.71TiB, used=11.86TiB
+System, RAID1: total=32.00MiB, used=1.89MiB
+Metadata, RAID1: total=22.00GiB, used=19.40GiB
+
+"Keep in mind, that the free values shown by the normal df are not
+reliable, as it is hard to predict how disk usage will behave in a
+copy-on-write and snapshotting filesystem like btrfs."
+
+The O/S (i.e. mount) sees only one partition, the last one above (so
+currently device /dev/sdh: see /etc/fstab where the relevant entry is
 
 UUID=495a3b08-5ae4-45e5-a994-d2aa0ca1c480 /data btrfs defaults,noatime,compress,user_subvol_rm_allowed 0 1
 
