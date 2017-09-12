@@ -30,7 +30,7 @@ timestamp=`date -u +%Y%m%d-%H%M`
 mkdir $timestamp
 log "new backup started in $timestamp"
 
-echo "$NICE mongodump --port 37010 -u admin -p \"$ADMIN_PASS\" --authenticationDatabase admin -o $timestamp"
+#echo "$NICE mongodump --port 37010 -u admin -p \"$ADMIN_PASS\" --authenticationDatabase admin -o $timestamp"
 $NICE mongodump --port 37010 -u admin -p "$ADMIN_PASS" --authenticationDatabase admin -o $timestamp
 $NICE rm -rvf $timestamp/'*' && echo 'deleted directory "*"' || echo 'no directory "*" and nothing deleted ...'
 log "mongodump finished"
