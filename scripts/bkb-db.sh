@@ -83,3 +83,8 @@ todel="`find $DUMP_DIR -maxdepth 1 -mindepth 1 -ctime +36 -type d`"
 echo "the following older directories in $DUMP_DIR are deleted: $todel"
 rm -rf $todel
 log "deleted old directories: $todel"
+echo "Sizes of dumps currently stored:"
+du -sh /storage/lmfdb/dumps/*
+echo "------------------------------------"
+echo "          dump complete             "
+echo "------------------------------------"
